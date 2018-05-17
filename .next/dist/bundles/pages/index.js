@@ -89,6 +89,7 @@ module.exports =
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_Button__ = __webpack_require__("./components/shared/Button/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__propTypes_Contact__ = __webpack_require__("./propTypes/Contact/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__lib_withMUI__ = __webpack_require__("./lib/withMUI.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styles_css__ = __webpack_require__("./components/Contact/styles.css.js");
 var _jsxFileName = "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Contact/index.js";
 
 var _templateObject = /*#__PURE__*/ _taggedTemplateLiteral(["\n  mutation deleteContact($id: ID!) {\n    deleteContact(id: $id) {\n      id\n    }\n  }\n"]);
@@ -115,41 +116,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var style = {
-  cursor: 'pointer',
-  maxWidth: 325,
-  margin: 16
-};
+
+var placeholders = ['https://semantic-ui.com/images/avatar2/large/elyse.png', 'https://semantic-ui.com/images/avatar2/large/matthew.png', 'https://semantic-ui.com/images/avatar2/large/kristy.png'];
 
 var Contact = function Contact(_ref) {
   var firstName = _ref.firstName,
       lastName = _ref.lastName,
-      phoneNumber = _ref.phoneNumber,
+      phoneNumbers = _ref.phoneNumbers,
       id = _ref.id,
       viewPage = _ref.viewPage,
       deleteContact = _ref.deleteContact;
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"], {
-    style: style,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27
-    }
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardHeader"], {
-    title: "".concat(firstName, " ").concat(lastName),
-    subtitle: phoneNumber,
-    avatar: "https://www.material-ui.com/images/ok-128.jpg",
+    style: __WEBPACK_IMPORTED_MODULE_8__styles_css__["a" /* styles */].card,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
     }
-  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardActions"], {
-    style: {
-      display: 'flex',
-      flexDirection: 'row'
-    },
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardHeader"], {
+    title: "".concat(firstName, " ").concat(lastName),
+    subtitle: phoneNumbers.map(function (p) {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31
+        }
+      }, p.number, " / ", p.label);
+    }),
+    avatar: placeholders[Math.floor(Math.random() * placeholders.length)] // for presentational purposes
+    ,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 29
+    }
+  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardActions"], {
+    style: __WEBPACK_IMPORTED_MODULE_8__styles_css__["a" /* styles */].actions,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34
     }
   }, !viewPage && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__shared_Button__["a" /* default */], {
     link: "/view?id=".concat(id),
@@ -157,7 +160,7 @@ var Contact = function Contact(_ref) {
     label: "View",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
     }
   }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__shared_Button__["a" /* default */], {
     link: "/edit?id=".concat(id),
@@ -165,7 +168,7 @@ var Contact = function Contact(_ref) {
     label: "Edit",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 40
     }
   }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui_RaisedButton___default.a, {
     label: "Delete",
@@ -175,7 +178,7 @@ var Contact = function Contact(_ref) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 45
     }
   })));
 };
@@ -216,6 +219,26 @@ var withQuery = Object(__WEBPACK_IMPORTED_MODULE_3_react_apollo__["graphql"])(de
 
 /***/ }),
 
+/***/ "./components/Contact/styles.css.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return styles; });
+var styles = {
+  card: {
+    cursor: 'pointer',
+    maxWidth: 325,
+    margin: 16
+  },
+  actions: {
+    display: 'flex',
+    flexDirection: 'row'
+  }
+};
+/* unused harmony default export */ var _unused_webpack_default_export = (styles);
+
+/***/ }),
+
 /***/ "./components/ContactList/index.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -226,9 +249,12 @@ var withQuery = Object(__WEBPACK_IMPORTED_MODULE_3_react_apollo__["graphql"])(de
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__("react-apollo");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_apollo__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__query__ = __webpack_require__("./components/ContactList/query.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__propTypes_Contact__ = __webpack_require__("./propTypes/Contact/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Contact__ = __webpack_require__("./components/Contact/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton__ = __webpack_require__("material-ui/RaisedButton");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__query__ = __webpack_require__("./components/ContactList/query.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__propTypes_Contact__ = __webpack_require__("./propTypes/Contact/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Contact__ = __webpack_require__("./components/Contact/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__styles_css__ = __webpack_require__("./components/ContactList/styles.css.js");
 var _jsxFileName = "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/ContactList/index.js";
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -239,6 +265,10 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
@@ -247,41 +277,60 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
-var style = {
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap'
-};
+
+
 
 var ContactList = function ContactList(_ref) {
-  var _ref$data = _ref.data,
+  var loadMoreContacts = _ref.loadMoreContacts,
+      _ref$data = _ref.data,
       allContacts = _ref$data.allContacts,
       loading = _ref$data.loading;
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-    style: style,
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_react__["Fragment"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+    style: __WEBPACK_IMPORTED_MODULE_7__styles_css__["a" /* styles */].loadWrapper,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 21
     }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default.a, {
+    onClick: function onClick() {
+      return loadMoreContacts();
+    },
+    primary: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    }
+  }, "load more")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+    style: __WEBPACK_IMPORTED_MODULE_7__styles_css__["a" /* styles */].contactWrapper,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    }
   }, !loading && allContacts.map(function (contact) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Contact__["a" /* default */], _extends({
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Contact__["a" /* default */], _extends({
       key: contact.id
     }, contact, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 32
       }
     }));
-  }));
+  })));
 };
 
 ContactList.propTypes = {
   data: Object(__WEBPACK_IMPORTED_MODULE_1_prop_types__["shape"])({
-    allContacts: Object(__WEBPACK_IMPORTED_MODULE_1_prop_types__["arrayOf"])(Object(__WEBPACK_IMPORTED_MODULE_1_prop_types__["shape"])(__WEBPACK_IMPORTED_MODULE_4__propTypes_Contact__["a" /* contactType */])),
+    allContacts: Object(__WEBPACK_IMPORTED_MODULE_1_prop_types__["arrayOf"])(Object(__WEBPACK_IMPORTED_MODULE_1_prop_types__["shape"])(__WEBPACK_IMPORTED_MODULE_5__propTypes_Contact__["a" /* contactType */])),
     loading: __WEBPACK_IMPORTED_MODULE_1_prop_types__["bool"]
-  }).isRequired
+  }).isRequired,
+  loadMoreContacts: __WEBPACK_IMPORTED_MODULE_1_prop_types__["func"].isRequired
 };
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_3__query__["a" /* allContactsQuery */], {
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_4__query__["a" /* allContactsQuery */], {
   options: {
     variables: {
       skip: 0,
@@ -304,9 +353,8 @@ ContactList.propTypes = {
               return previousResult;
             }
 
-            return Object.assign({}, previousResult, {
-              // Append the new Contacts results to the old one
-              allContacts: _toConsumableArray(previousResult.allPosts).concat(_toConsumableArray(fetchMoreResult.allPosts))
+            return _objectSpread({}, previousResult, {
+              allContacts: _toConsumableArray(previousResult.allContacts).concat(_toConsumableArray(fetchMoreResult.allContacts))
             });
           }
         });
@@ -324,13 +372,34 @@ ContactList.propTypes = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allContactsQuery; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_tag__ = __webpack_require__("graphql-tag");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_tag___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_graphql_tag__);
-var _templateObject = /*#__PURE__*/ _taggedTemplateLiteral(["\n  query allContacts($first: Int!, $skip: Int!) {\n    allContacts(orderBy: createdAt_DESC, first: $first, skip: $skip) {\n      id\n      createdAt\n      firstName\n      lastName\n      phoneNumber\n    }\n    _allContactsMeta {\n      count\n    }\n  }\n"]);
+var _templateObject = /*#__PURE__*/ _taggedTemplateLiteral(["\n  query allContacts($first: Int!, $skip: Int!) {\n    allContacts(orderBy: createdAt_DESC, first: $first, skip: $skip) {\n      id\n      createdAt\n      firstName\n      lastName\n      phoneNumbers {\n        label\n        number\n      }\n    }\n    _allContactsMeta {\n      count\n    }\n  }\n"]);
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 var allContactsQuery = __WEBPACK_IMPORTED_MODULE_0_graphql_tag___default()(_templateObject);
 /* unused harmony default export */ var _unused_webpack_default_export = (allContactsQuery);
+
+/***/ }),
+
+/***/ "./components/ContactList/styles.css.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return styles; });
+var styles = {
+  contactWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  loadWrapper: {
+    textAlign: 'center',
+    width: '100%',
+    marginTop: 16
+  }
+};
+/* unused harmony default export */ var _unused_webpack_default_export = (styles);
 
 /***/ }),
 
@@ -344,11 +413,12 @@ var allContactsQuery = __WEBPACK_IMPORTED_MODULE_0_graphql_tag___default()(_temp
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_AppBar__ = __webpack_require__("material-ui/AppBar");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_AppBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_material_ui_AppBar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_FlatButton__ = __webpack_require__("material-ui/FlatButton");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_FlatButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_FlatButton__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton__ = __webpack_require__("material-ui/RaisedButton");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_link__ = __webpack_require__("next/link");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_next_link__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lib_withMUI__ = __webpack_require__("./lib/withMUI.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styles_css__ = __webpack_require__("./components/Layout/styles.css.js");
 var _jsxFileName = "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/index.js";
 
 
@@ -356,62 +426,92 @@ var _jsxFileName = "/Users/sina/Documents/GitHub/react-redux-graphql-contact-lis
 
 
 
-var styles = {
-  title: {
-    cursor: 'pointer'
-  }
-};
+
 
 var Title = function Title() {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_next_link___default.a, {
     href: "/",
-    style: styles.title,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 12
     }
-  }, "Contact List");
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", {
+    style: __WEBPACK_IMPORTED_MODULE_6__styles_css__["a" /* default */].title,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    }
+  }, "Contact List"));
 };
 
-var Create = function Create() {
+var ElementRightButton = function ElementRightButton(_ref) {
+  var href = _ref.href,
+      label = _ref.label;
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_next_link___default.a, {
-    href: "/create",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    }
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_FlatButton___default.a, {
-    label: "Create",
+    href: href,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 23
     }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default.a, {
+    style: __WEBPACK_IMPORTED_MODULE_6__styles_css__["a" /* default */].create,
+    overlayStyle: {
+      padding: '0 16px'
+    },
+    secondary: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    }
+  }, label));
+};
+
+var IconElementRight = function IconElementRight() {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ElementRightButton, {
+    href: "/create",
+    label: "Create a contact",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    }
+  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ElementRightButton, {
+    href: "/",
+    label: "Home",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    }
   }));
 };
 
-var Layout = function Layout(_ref) {
-  var children = _ref.children;
+var Layout = function Layout(_ref2) {
+  var children = _ref2.children;
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_react__["Fragment"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 48
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui_AppBar___default.a, {
     title: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Title, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 50
       }
     }),
-    iconElementRight: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Create, {
+    iconElementRight: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconElementRight, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 51
       }
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 49
     }
   }), children);
 };
@@ -419,7 +519,29 @@ var Layout = function Layout(_ref) {
 Layout.propTypes = {
   children: __WEBPACK_IMPORTED_MODULE_1_prop_types__["node"].isRequired
 };
+ElementRightButton.propTypes = {
+  href: __WEBPACK_IMPORTED_MODULE_1_prop_types__["string"].isRequired,
+  label: __WEBPACK_IMPORTED_MODULE_1_prop_types__["string"].isRequired
+};
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_5__lib_withMUI__["a" /* default */])(Layout));
+
+/***/ }),
+
+/***/ "./components/Layout/styles.css.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export styles */
+var styles = {
+  title: {
+    cursor: 'pointer'
+  },
+  create: {
+    color: 'white',
+    margin: 8
+  }
+};
+/* harmony default export */ __webpack_exports__["a"] = (styles);
 
 /***/ }),
 
@@ -517,9 +639,9 @@ var config = {
 var PRIMARY_COLOR = '#55acee';
 var PRIMARY_COLOR_TWO = '#88cde9';
 var PRIMARY_COLOR_THREE = '#1e6e87';
-var ACCENT_COLOR_ONE = '#556cb7';
-var ACCENT_COLOR_TWO = '#889aea';
-var ACCENT_COLOR_THREE = '#204287';
+var ACCENT_COLOR_ONE = '#7ed6df';
+var ACCENT_COLOR_TWO = '#686de0';
+var ACCENT_COLOR_THREE = '#686de0';
 
 /***/ }),
 
@@ -561,6 +683,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/* global navigator */
 
 
 
@@ -609,42 +732,42 @@ var withMaterialUI = function withMaterialUI(C) {
         return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 58
+            lineNumber: 57
           }
         }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_next_head___default.a, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 59
+            lineNumber: 58
           }
         }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("title", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 60
+            lineNumber: 59
           }
-        }, "Title"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("meta", {
+        }, "Contact List - Sina Zand"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("meta", {
           name: "viewport",
           content: "initial-scale=1.0, width=device-width",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 61
+            lineNumber: 60
           }
         }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("link", {
           href: "https://fonts.googleapis.com/css?family=Lato",
           rel: "stylesheet",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 62
+            lineNumber: 61
           }
         })), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles_MuiThemeProvider___default.a, {
           muiTheme: muiTheme,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 64
+            lineNumber: 63
           }
         }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(C, _extends({}, this.props, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 65
+            lineNumber: 64
           }
         }))));
       }
@@ -660,10 +783,8 @@ var withMaterialUI = function withMaterialUI(C) {
               switch (_context.prev = _context.next) {
                 case 0:
                   req = ctx.req;
-                  userAgent = req ? req.headers['user-agent'] : navigator.userAgent; // const subProps = await ComposedComponent.getInitialProps(ctx)
-
+                  userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
                   return _context.abrupt("return", {
-                    // ...subProps,
                     userAgent: userAgent
                   });
 
@@ -783,13 +904,6 @@ module.exports = require("material-ui/AppBar");
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/Card");
-
-/***/ }),
-
-/***/ "material-ui/FlatButton":
-/***/ (function(module, exports) {
-
-module.exports = require("material-ui/FlatButton");
 
 /***/ }),
 

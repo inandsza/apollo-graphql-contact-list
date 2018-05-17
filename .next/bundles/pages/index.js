@@ -21,6 +21,7 @@ module.exports =
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_Button__ = __webpack_require__("./components/shared/Button/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__propTypes_Contact__ = __webpack_require__("./propTypes/Contact/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__lib_withMUI__ = __webpack_require__("./lib/withMUI.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styles_css__ = __webpack_require__("./components/Contact/styles.css.js");
 var _jsxFileName = "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Contact/index.js";
 
 var _templateObject = /*#__PURE__*/ _taggedTemplateLiteral(["\n  mutation deleteContact($id: ID!) {\n    deleteContact(id: $id) {\n      id\n    }\n  }\n"]);
@@ -53,41 +54,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var style = {
-  cursor: 'pointer',
-  maxWidth: 325,
-  margin: 16
-};
+
+var placeholders = ['https://semantic-ui.com/images/avatar2/large/elyse.png', 'https://semantic-ui.com/images/avatar2/large/matthew.png', 'https://semantic-ui.com/images/avatar2/large/kristy.png'];
 
 var Contact = function Contact(_ref) {
   var firstName = _ref.firstName,
       lastName = _ref.lastName,
-      phoneNumber = _ref.phoneNumber,
+      phoneNumbers = _ref.phoneNumbers,
       id = _ref.id,
       viewPage = _ref.viewPage,
       deleteContact = _ref.deleteContact;
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["Card"], {
-    style: style,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27
-    }
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardHeader"], {
-    title: "".concat(firstName, " ").concat(lastName),
-    subtitle: phoneNumber,
-    avatar: "https://www.material-ui.com/images/ok-128.jpg",
+    style: __WEBPACK_IMPORTED_MODULE_8__styles_css__["a" /* styles */].card,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
     }
-  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardActions"], {
-    style: {
-      display: 'flex',
-      flexDirection: 'row'
-    },
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardHeader"], {
+    title: "".concat(firstName, " ").concat(lastName),
+    subtitle: phoneNumbers.map(function (p) {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31
+        }
+      }, p.number, " / ", p.label);
+    }),
+    avatar: placeholders[Math.floor(Math.random() * placeholders.length)] // for presentational purposes
+    ,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 29
+    }
+  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__["CardActions"], {
+    style: __WEBPACK_IMPORTED_MODULE_8__styles_css__["a" /* styles */].actions,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34
     }
   }, !viewPage && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__shared_Button__["a" /* default */], {
     link: "/view?id=".concat(id),
@@ -95,7 +98,7 @@ var Contact = function Contact(_ref) {
     label: "View",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
     }
   }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__shared_Button__["a" /* default */], {
     link: "/edit?id=".concat(id),
@@ -103,7 +106,7 @@ var Contact = function Contact(_ref) {
     label: "Edit",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 40
     }
   }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui_RaisedButton___default.a, {
     label: "Delete",
@@ -113,7 +116,7 @@ var Contact = function Contact(_ref) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 45
     }
   })));
 };
@@ -165,11 +168,56 @@ var _default = withQuery(Object(__WEBPACK_IMPORTED_MODULE_7__lib_withMUI__["a" /
     return;
   }
 
-  reactHotLoader.register(style, "style", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Contact/index.js");
+  reactHotLoader.register(placeholders, "placeholders", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Contact/index.js");
   reactHotLoader.register(Contact, "Contact", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Contact/index.js");
   reactHotLoader.register(deleteContact, "deleteContact", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Contact/index.js");
   reactHotLoader.register(withQuery, "withQuery", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Contact/index.js");
   reactHotLoader.register(_default, "default", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Contact/index.js");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./components/Contact/styles.css.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return styles; });
+(function () {
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+var styles = {
+  card: {
+    cursor: 'pointer',
+    maxWidth: 325,
+    margin: 16
+  },
+  actions: {
+    display: 'flex',
+    flexDirection: 'row'
+  }
+};
+var _default = styles;
+/* unused harmony default export */ var _unused_webpack_default_export = (_default);
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(styles, "styles", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Contact/styles.css.js");
+  reactHotLoader.register(_default, "default", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Contact/styles.css.js");
   leaveModule(module);
 })();
 
@@ -188,9 +236,12 @@ var _default = withQuery(Object(__WEBPACK_IMPORTED_MODULE_7__lib_withMUI__["a" /
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__("./node_modules/react-apollo/react-apollo.browser.umd.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_apollo__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__query__ = __webpack_require__("./components/ContactList/query.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__propTypes_Contact__ = __webpack_require__("./propTypes/Contact/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Contact__ = __webpack_require__("./components/Contact/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton__ = __webpack_require__("./node_modules/material-ui/RaisedButton/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__query__ = __webpack_require__("./components/ContactList/query.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__propTypes_Contact__ = __webpack_require__("./propTypes/Contact/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Contact__ = __webpack_require__("./components/Contact/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__styles_css__ = __webpack_require__("./components/ContactList/styles.css.js");
 var _jsxFileName = "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/ContactList/index.js";
 
 (function () {
@@ -207,6 +258,10 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
@@ -215,42 +270,61 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
-var style = {
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap'
-};
+
+
 
 var ContactList = function ContactList(_ref) {
-  var _ref$data = _ref.data,
+  var loadMoreContacts = _ref.loadMoreContacts,
+      _ref$data = _ref.data,
       allContacts = _ref$data.allContacts,
       loading = _ref$data.loading;
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-    style: style,
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_react__["Fragment"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+    style: __WEBPACK_IMPORTED_MODULE_7__styles_css__["a" /* styles */].loadWrapper,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 21
     }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default.a, {
+    onClick: function onClick() {
+      return loadMoreContacts();
+    },
+    primary: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    }
+  }, "load more")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+    style: __WEBPACK_IMPORTED_MODULE_7__styles_css__["a" /* styles */].contactWrapper,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    }
   }, !loading && allContacts.map(function (contact) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Contact__["a" /* default */], _extends({
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Contact__["a" /* default */], _extends({
       key: contact.id
     }, contact, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 32
       }
     }));
-  }));
+  })));
 };
 
 ContactList.propTypes = {
   data: Object(__WEBPACK_IMPORTED_MODULE_1_prop_types__["shape"])({
-    allContacts: Object(__WEBPACK_IMPORTED_MODULE_1_prop_types__["arrayOf"])(Object(__WEBPACK_IMPORTED_MODULE_1_prop_types__["shape"])(__WEBPACK_IMPORTED_MODULE_4__propTypes_Contact__["a" /* contactType */])),
+    allContacts: Object(__WEBPACK_IMPORTED_MODULE_1_prop_types__["arrayOf"])(Object(__WEBPACK_IMPORTED_MODULE_1_prop_types__["shape"])(__WEBPACK_IMPORTED_MODULE_5__propTypes_Contact__["a" /* contactType */])),
     loading: __WEBPACK_IMPORTED_MODULE_1_prop_types__["bool"]
-  }).isRequired
+  }).isRequired,
+  loadMoreContacts: __WEBPACK_IMPORTED_MODULE_1_prop_types__["func"].isRequired
 };
 
-var _default = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_3__query__["a" /* allContactsQuery */], {
+var _default = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_4__query__["a" /* allContactsQuery */], {
   options: {
     variables: {
       skip: 0,
@@ -273,9 +347,8 @@ var _default = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__W
               return previousResult;
             }
 
-            return Object.assign({}, previousResult, {
-              // Append the new Contacts results to the old one
-              allContacts: _toConsumableArray(previousResult.allPosts).concat(_toConsumableArray(fetchMoreResult.allPosts))
+            return _objectSpread({}, previousResult, {
+              allContacts: _toConsumableArray(previousResult.allContacts).concat(_toConsumableArray(fetchMoreResult.allContacts))
             });
           }
         });
@@ -296,7 +369,6 @@ var _default = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__W
     return;
   }
 
-  reactHotLoader.register(style, "style", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/ContactList/index.js");
   reactHotLoader.register(ContactList, "ContactList", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/ContactList/index.js");
   reactHotLoader.register(_default, "default", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/ContactList/index.js");
   leaveModule(module);
@@ -314,7 +386,7 @@ var _default = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__W
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allContactsQuery; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_tag__ = __webpack_require__("./node_modules/graphql-tag/src/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_tag___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_graphql_tag__);
-var _templateObject = /*#__PURE__*/ _taggedTemplateLiteral(["\n  query allContacts($first: Int!, $skip: Int!) {\n    allContacts(orderBy: createdAt_DESC, first: $first, skip: $skip) {\n      id\n      createdAt\n      firstName\n      lastName\n      phoneNumber\n    }\n    _allContactsMeta {\n      count\n    }\n  }\n"]);
+var _templateObject = /*#__PURE__*/ _taggedTemplateLiteral(["\n  query allContacts($first: Int!, $skip: Int!) {\n    allContacts(orderBy: createdAt_DESC, first: $first, skip: $skip) {\n      id\n      createdAt\n      firstName\n      lastName\n      phoneNumbers {\n        label\n        number\n      }\n    }\n    _allContactsMeta {\n      count\n    }\n  }\n"]);
 
 (function () {
   var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
@@ -349,6 +421,52 @@ var _default = allContactsQuery;
 
 /***/ }),
 
+/***/ "./components/ContactList/styles.css.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return styles; });
+(function () {
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+var styles = {
+  contactWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  loadWrapper: {
+    textAlign: 'center',
+    width: '100%',
+    marginTop: 16
+  }
+};
+var _default = styles;
+/* unused harmony default export */ var _unused_webpack_default_export = (_default);
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(styles, "styles", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/ContactList/styles.css.js");
+  reactHotLoader.register(_default, "default", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/ContactList/styles.css.js");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
 /***/ "./components/Layout/index.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -359,11 +477,12 @@ var _default = allContactsQuery;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_AppBar__ = __webpack_require__("./node_modules/material-ui/AppBar/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_AppBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_material_ui_AppBar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_FlatButton__ = __webpack_require__("./node_modules/material-ui/FlatButton/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_FlatButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_FlatButton__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton__ = __webpack_require__("./node_modules/material-ui/RaisedButton/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_link__ = __webpack_require__("./node_modules/next/link.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_next_link__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lib_withMUI__ = __webpack_require__("./lib/withMUI.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styles_css__ = __webpack_require__("./components/Layout/styles.css.js");
 var _jsxFileName = "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/index.js";
 
 (function () {
@@ -378,68 +497,102 @@ var _jsxFileName = "/Users/sina/Documents/GitHub/react-redux-graphql-contact-lis
 
 
 
-var styles = {
-  title: {
-    cursor: 'pointer'
-  }
-};
+
 
 var Title = function Title() {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_next_link___default.a, {
     href: "/",
-    style: styles.title,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 12
     }
-  }, "Contact List");
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", {
+    style: __WEBPACK_IMPORTED_MODULE_6__styles_css__["a" /* default */].title,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    }
+  }, "Contact List"));
 };
 
-var Create = function Create() {
+var ElementRightButton = function ElementRightButton(_ref) {
+  var href = _ref.href,
+      label = _ref.label;
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_next_link___default.a, {
-    href: "/create",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    }
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_FlatButton___default.a, {
-    label: "Create",
+    href: href,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 23
     }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_RaisedButton___default.a, {
+    style: __WEBPACK_IMPORTED_MODULE_6__styles_css__["a" /* default */].create,
+    overlayStyle: {
+      padding: '0 16px'
+    },
+    secondary: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    }
+  }, label));
+};
+
+var IconElementRight = function IconElementRight() {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ElementRightButton, {
+    href: "/create",
+    label: "Create a contact",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    }
+  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ElementRightButton, {
+    href: "/",
+    label: "Home",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    }
   }));
 };
 
-var Layout = function Layout(_ref) {
-  var children = _ref.children;
+var Layout = function Layout(_ref2) {
+  var children = _ref2.children;
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_react__["Fragment"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 48
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui_AppBar___default.a, {
     title: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Title, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 50
       }
     }),
-    iconElementRight: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Create, {
+    iconElementRight: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(IconElementRight, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 51
       }
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 49
     }
   }), children);
 };
 
 Layout.propTypes = {
   children: __WEBPACK_IMPORTED_MODULE_1_prop_types__["node"].isRequired
+};
+ElementRightButton.propTypes = {
+  href: __WEBPACK_IMPORTED_MODULE_1_prop_types__["string"].isRequired,
+  label: __WEBPACK_IMPORTED_MODULE_1_prop_types__["string"].isRequired
 };
 
 var _default = Object(__WEBPACK_IMPORTED_MODULE_5__lib_withMUI__["a" /* default */])(Layout);
@@ -456,11 +609,54 @@ var _default = Object(__WEBPACK_IMPORTED_MODULE_5__lib_withMUI__["a" /* default 
     return;
   }
 
-  reactHotLoader.register(styles, "styles", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/index.js");
   reactHotLoader.register(Title, "Title", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/index.js");
-  reactHotLoader.register(Create, "Create", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/index.js");
+  reactHotLoader.register(ElementRightButton, "ElementRightButton", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/index.js");
+  reactHotLoader.register(IconElementRight, "IconElementRight", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/index.js");
   reactHotLoader.register(Layout, "Layout", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/index.js");
   reactHotLoader.register(_default, "default", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/index.js");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./components/Layout/styles.css.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* unused harmony export styles */
+(function () {
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+var styles = {
+  title: {
+    cursor: 'pointer'
+  },
+  create: {
+    color: 'white',
+    margin: 8
+  }
+};
+var _default = styles;
+/* harmony default export */ __webpack_exports__["a"] = (_default);
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(styles, "styles", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/styles.css.js");
+  reactHotLoader.register(_default, "default", "/Users/sina/Documents/GitHub/react-redux-graphql-contact-list/components/Layout/styles.css.js");
   leaveModule(module);
 })();
 
@@ -624,9 +820,9 @@ var _default = Object(__WEBPACK_IMPORTED_MODULE_0_next_apollo__["withData"])(con
 var PRIMARY_COLOR = '#55acee';
 var PRIMARY_COLOR_TWO = '#88cde9';
 var PRIMARY_COLOR_THREE = '#1e6e87';
-var ACCENT_COLOR_ONE = '#556cb7';
-var ACCENT_COLOR_TWO = '#889aea';
-var ACCENT_COLOR_THREE = '#204287';
+var ACCENT_COLOR_ONE = '#7ed6df';
+var ACCENT_COLOR_TWO = '#686de0';
+var ACCENT_COLOR_THREE = '#686de0';
 ;
 
 (function () {
@@ -696,6 +892,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/* global navigator */
 
 
 
@@ -744,42 +941,42 @@ var withMaterialUI = function withMaterialUI(C) {
         return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 58
+            lineNumber: 57
           }
         }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_next_head___default.a, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 59
+            lineNumber: 58
           }
         }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("title", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 60
+            lineNumber: 59
           }
-        }, "Title"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("meta", {
+        }, "Contact List - Sina Zand"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("meta", {
           name: "viewport",
           content: "initial-scale=1.0, width=device-width",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 61
+            lineNumber: 60
           }
         }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("link", {
           href: "https://fonts.googleapis.com/css?family=Lato",
           rel: "stylesheet",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 62
+            lineNumber: 61
           }
         })), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles_MuiThemeProvider___default.a, {
           muiTheme: muiTheme,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 64
+            lineNumber: 63
           }
         }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(C, _extends({}, this.props, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 65
+            lineNumber: 64
           }
         }))));
       }
@@ -802,10 +999,8 @@ var withMaterialUI = function withMaterialUI(C) {
               switch (_context.prev = _context.next) {
                 case 0:
                   req = ctx.req;
-                  userAgent = req ? req.headers['user-agent'] : navigator.userAgent; // const subProps = await ComposedComponent.getInitialProps(ctx)
-
+                  userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
                   return _context.abrupt("return", {
-                    // ...subProps,
                     userAgent: userAgent
                   });
 
@@ -6431,7 +6626,7 @@ function isTest() {
     return isEnv('test') === true;
 }
 //# sourceMappingURL=environment.js.map
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/node-libs-browser/node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -16622,477 +16817,6 @@ exports.default = _Card3.default;
 
 /***/ }),
 
-/***/ "./node_modules/material-ui/FlatButton/FlatButton.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends2 = __webpack_require__("./node_modules/babel-runtime/helpers/extends.js");
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _objectWithoutProperties2 = __webpack_require__("./node_modules/babel-runtime/helpers/objectWithoutProperties.js");
-
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
-
-var _getPrototypeOf = __webpack_require__("./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__("./node_modules/babel-runtime/helpers/classCallCheck.js");
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__("./node_modules/babel-runtime/helpers/createClass.js");
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__("./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__("./node_modules/babel-runtime/helpers/inherits.js");
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _simpleAssign = __webpack_require__("./node_modules/simple-assign/index.js");
-
-var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
-
-var _react = __webpack_require__("./node_modules/react/cjs/react.development.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__("./node_modules/next/node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _transitions = __webpack_require__("./node_modules/material-ui/styles/transitions.js");
-
-var _transitions2 = _interopRequireDefault(_transitions);
-
-var _colorManipulator = __webpack_require__("./node_modules/material-ui/utils/colorManipulator.js");
-
-var _EnhancedButton = __webpack_require__("./node_modules/material-ui/internal/EnhancedButton.js");
-
-var _EnhancedButton2 = _interopRequireDefault(_EnhancedButton);
-
-var _FlatButtonLabel = __webpack_require__("./node_modules/material-ui/FlatButton/FlatButtonLabel.js");
-
-var _FlatButtonLabel2 = _interopRequireDefault(_FlatButtonLabel);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function validateLabel(props, propName, componentName) {
-  if (true) {
-    if (!props.children && props.label !== 0 && !props.label && !props.icon) {
-      return new Error('Required prop label or children or icon was not specified in ' + componentName + '.');
-    }
-  }
-}
-
-var FlatButton = function (_Component) {
-  (0, _inherits3.default)(FlatButton, _Component);
-
-  function FlatButton() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, FlatButton);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = FlatButton.__proto__ || (0, _getPrototypeOf2.default)(FlatButton)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      hovered: false,
-      isKeyboardFocused: false,
-      touch: false
-    }, _this.handleKeyboardFocus = function (event, isKeyboardFocused) {
-      _this.setState({ isKeyboardFocused: isKeyboardFocused });
-      _this.props.onKeyboardFocus(event, isKeyboardFocused);
-    }, _this.handleMouseEnter = function (event) {
-      // Cancel hover styles for touch devices
-      if (!_this.state.touch) _this.setState({ hovered: true });
-      _this.props.onMouseEnter(event);
-    }, _this.handleMouseLeave = function (event) {
-      _this.setState({ hovered: false });
-      _this.props.onMouseLeave(event);
-    }, _this.handleTouchStart = function (event) {
-      _this.setState({ touch: true });
-      _this.props.onTouchStart(event);
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-  }
-
-  (0, _createClass3.default)(FlatButton, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      if (nextProps.disabled) {
-        this.setState({
-          hovered: false
-        });
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          backgroundColor = _props.backgroundColor,
-          children = _props.children,
-          disabled = _props.disabled,
-          fullWidth = _props.fullWidth,
-          hoverColor = _props.hoverColor,
-          icon = _props.icon,
-          label = _props.label,
-          labelStyle = _props.labelStyle,
-          labelPosition = _props.labelPosition,
-          primary = _props.primary,
-          rippleColor = _props.rippleColor,
-          secondary = _props.secondary,
-          style = _props.style,
-          other = (0, _objectWithoutProperties3.default)(_props, ['backgroundColor', 'children', 'disabled', 'fullWidth', 'hoverColor', 'icon', 'label', 'labelStyle', 'labelPosition', 'primary', 'rippleColor', 'secondary', 'style']);
-      var _context$muiTheme = this.context.muiTheme,
-          borderRadius = _context$muiTheme.borderRadius,
-          _context$muiTheme$but = _context$muiTheme.button,
-          buttonHeight = _context$muiTheme$but.height,
-          buttonMinWidth = _context$muiTheme$but.minWidth,
-          buttonTextTransform = _context$muiTheme$but.textTransform,
-          _context$muiTheme$fla = _context$muiTheme.flatButton,
-          buttonFilterColor = _context$muiTheme$fla.buttonFilterColor,
-          buttonColor = _context$muiTheme$fla.color,
-          disabledTextColor = _context$muiTheme$fla.disabledTextColor,
-          fontSize = _context$muiTheme$fla.fontSize,
-          fontWeight = _context$muiTheme$fla.fontWeight,
-          primaryTextColor = _context$muiTheme$fla.primaryTextColor,
-          secondaryTextColor = _context$muiTheme$fla.secondaryTextColor,
-          textColor = _context$muiTheme$fla.textColor,
-          _context$muiTheme$fla2 = _context$muiTheme$fla.textTransform,
-          textTransform = _context$muiTheme$fla2 === undefined ? buttonTextTransform || 'uppercase' : _context$muiTheme$fla2;
-
-      var defaultTextColor = disabled ? disabledTextColor : primary ? primaryTextColor : secondary ? secondaryTextColor : textColor;
-
-      var defaultHoverColor = (0, _colorManipulator.fade)(buttonFilterColor, 0.2);
-      var defaultRippleColor = buttonFilterColor;
-      var buttonHoverColor = hoverColor || defaultHoverColor;
-      var buttonRippleColor = rippleColor || defaultRippleColor;
-      var buttonBackgroundColor = backgroundColor || buttonColor;
-      var hovered = (this.state.hovered || this.state.isKeyboardFocused) && !disabled;
-
-      var mergedRootStyles = (0, _simpleAssign2.default)({}, {
-        height: buttonHeight,
-        lineHeight: buttonHeight + 'px',
-        minWidth: fullWidth ? '100%' : buttonMinWidth,
-        color: defaultTextColor,
-        transition: _transitions2.default.easeOut(),
-        borderRadius: borderRadius,
-        userSelect: 'none',
-        overflow: 'hidden',
-        backgroundColor: hovered ? buttonHoverColor : buttonBackgroundColor,
-        padding: 0,
-        margin: 0,
-        textAlign: 'center'
-      }, style);
-
-      var iconCloned = void 0;
-      var labelStyleIcon = {};
-
-      if (icon) {
-        var iconStyles = (0, _simpleAssign2.default)({
-          verticalAlign: 'middle',
-          marginLeft: label && labelPosition !== 'before' ? 12 : 0,
-          marginRight: label && labelPosition === 'before' ? 12 : 0
-        }, icon.props.style);
-        iconCloned = _react2.default.cloneElement(icon, {
-          color: icon.props.color || mergedRootStyles.color,
-          style: iconStyles,
-          key: 'iconCloned'
-        });
-
-        if (labelPosition === 'before') {
-          labelStyleIcon.paddingRight = 8;
-        } else {
-          labelStyleIcon.paddingLeft = 8;
-        }
-      }
-
-      var mergedLabelStyles = (0, _simpleAssign2.default)({
-        letterSpacing: 0,
-        textTransform: textTransform,
-        fontWeight: fontWeight,
-        fontSize: fontSize
-      }, labelStyleIcon, labelStyle);
-
-      var labelElement = label ? _react2.default.createElement(_FlatButtonLabel2.default, { key: 'labelElement', label: label, style: mergedLabelStyles }) : undefined;
-
-      // Place label before or after children.
-      var enhancedButtonChildren = labelPosition === 'before' ? [labelElement, iconCloned, children] : [children, iconCloned, labelElement];
-
-      return _react2.default.createElement(
-        _EnhancedButton2.default,
-        (0, _extends3.default)({}, other, {
-          disabled: disabled,
-          focusRippleColor: buttonRippleColor,
-          focusRippleOpacity: 0.3,
-          onKeyboardFocus: this.handleKeyboardFocus,
-          onMouseLeave: this.handleMouseLeave,
-          onMouseEnter: this.handleMouseEnter,
-          onTouchStart: this.handleTouchStart,
-          style: mergedRootStyles,
-          touchRippleColor: buttonRippleColor,
-          touchRippleOpacity: 0.3
-        }),
-        enhancedButtonChildren
-      );
-    }
-  }]);
-  return FlatButton;
-}(_react.Component);
-
-FlatButton.muiName = 'FlatButton';
-FlatButton.defaultProps = {
-  disabled: false,
-  fullWidth: false,
-  labelStyle: {},
-  labelPosition: 'after',
-  onKeyboardFocus: function onKeyboardFocus() {},
-  onMouseEnter: function onMouseEnter() {},
-  onMouseLeave: function onMouseLeave() {},
-  onTouchStart: function onTouchStart() {},
-  primary: false,
-  secondary: false
-};
-FlatButton.contextTypes = {
-  muiTheme: _propTypes2.default.object.isRequired
-};
-FlatButton.propTypes =  true ? {
-  /**
-   * Color of button when mouse is not hovering over it.
-   */
-  backgroundColor: _propTypes2.default.string,
-  /**
-   * This is what will be displayed inside the button.
-   * If a label is specified, the text within the label prop will
-   * be displayed. Otherwise, the component will expect children
-   * which will then be displayed. (In our example,
-   * we are nesting an `<input type="file" />` and a `span`
-   * that acts as our label to be displayed.) This only
-   * applies to flat and raised buttons.
-   */
-  children: _propTypes2.default.node,
-  /**
-   * The CSS class name of the root element.
-   */
-  className: _propTypes2.default.string,
-  /**
-   * The element to use as the container for the FlatButton. Either a string to
-   * use a DOM element or a ReactElement. This is useful for wrapping the
-   * FlatButton in a custom Link component. If a ReactElement is given, ensure
-   * that it passes all of its given props through to the underlying DOM
-   * element and renders its children prop for proper integration.
-   */
-  containerElement: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.element]),
-  /**
-   * If true, the element's ripple effect will be disabled.
-   */
-  disableTouchRipple: _propTypes2.default.bool,
-  /**
-   * Disables the button if set to true.
-   */
-  disabled: _propTypes2.default.bool,
-  /**
-   * If true, the button will take up the full width of its container.
-   */
-  fullWidth: _propTypes2.default.bool,
-  /**
-   * Color of button when mouse hovers over.
-   */
-  hoverColor: _propTypes2.default.string,
-  /**
-   * The URL to link to when the button is clicked.
-   */
-  href: _propTypes2.default.string,
-  /**
-   * Use this property to display an icon.
-   */
-  icon: _propTypes2.default.node,
-  /**
-   * Label for the button.
-   */
-  label: validateLabel,
-  /**
-   * Place label before or after the passed children.
-   */
-  labelPosition: _propTypes2.default.oneOf(['before', 'after']),
-  /**
-   * Override the inline-styles of the button's label element.
-   */
-  labelStyle: _propTypes2.default.object,
-  /**
-   * Callback function fired when the button is clicked.
-   *
-   * @param {object} event Click event targeting the button.
-   */
-  onClick: _propTypes2.default.func,
-  /**
-   * Callback function fired when the element is focused or blurred by the keyboard.
-   *
-   * @param {object} event `focus` or `blur` event targeting the element.
-   * @param {boolean} isKeyboardFocused Indicates whether the element is focused.
-   */
-  onKeyboardFocus: _propTypes2.default.func,
-  /** @ignore */
-  onMouseEnter: _propTypes2.default.func,
-  /** @ignore */
-  onMouseLeave: _propTypes2.default.func,
-  /** @ignore */
-  onTouchStart: _propTypes2.default.func,
-  /**
-   * If true, colors button according to
-   * primaryTextColor from the Theme.
-   */
-  primary: _propTypes2.default.bool,
-  /**
-   * Color for the ripple after button is clicked.
-   */
-  rippleColor: _propTypes2.default.string,
-  /**
-   * If true, colors button according to secondaryTextColor from the theme.
-   * The primary prop has precendent if set to true.
-   */
-  secondary: _propTypes2.default.bool,
-  /**
-   * Override the inline-styles of the root element.
-   */
-  style: _propTypes2.default.object
-} : {};
-exports.default = FlatButton;
-
-/***/ }),
-
-/***/ "./node_modules/material-ui/FlatButton/FlatButtonLabel.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _getPrototypeOf = __webpack_require__("./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__("./node_modules/babel-runtime/helpers/classCallCheck.js");
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__("./node_modules/babel-runtime/helpers/createClass.js");
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__("./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__("./node_modules/babel-runtime/helpers/inherits.js");
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _simpleAssign = __webpack_require__("./node_modules/simple-assign/index.js");
-
-var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
-
-var _react = __webpack_require__("./node_modules/react/cjs/react.development.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__("./node_modules/next/node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function getStyles(props, context) {
-  var baseTheme = context.muiTheme.baseTheme;
-
-
-  return {
-    root: {
-      position: 'relative',
-      paddingLeft: baseTheme.spacing.desktopGutterLess,
-      paddingRight: baseTheme.spacing.desktopGutterLess,
-      verticalAlign: 'middle'
-    }
-  };
-}
-
-var FlatButtonLabel = function (_Component) {
-  (0, _inherits3.default)(FlatButtonLabel, _Component);
-
-  function FlatButtonLabel() {
-    (0, _classCallCheck3.default)(this, FlatButtonLabel);
-    return (0, _possibleConstructorReturn3.default)(this, (FlatButtonLabel.__proto__ || (0, _getPrototypeOf2.default)(FlatButtonLabel)).apply(this, arguments));
-  }
-
-  (0, _createClass3.default)(FlatButtonLabel, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          label = _props.label,
-          style = _props.style;
-      var prepareStyles = this.context.muiTheme.prepareStyles;
-
-      var styles = getStyles(this.props, this.context);
-
-      return _react2.default.createElement(
-        'span',
-        { style: prepareStyles((0, _simpleAssign2.default)(styles.root, style)) },
-        label
-      );
-    }
-  }]);
-  return FlatButtonLabel;
-}(_react.Component);
-
-FlatButtonLabel.contextTypes = {
-  muiTheme: _propTypes2.default.object.isRequired
-};
-FlatButtonLabel.propTypes =  true ? {
-  label: _propTypes2.default.node,
-  style: _propTypes2.default.object
-} : {};
-exports.default = FlatButtonLabel;
-
-/***/ }),
-
-/***/ "./node_modules/material-ui/FlatButton/index.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
-
-var _FlatButton = __webpack_require__("./node_modules/material-ui/FlatButton/FlatButton.js");
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _FlatButton2.default;
-
-/***/ }),
-
 /***/ "./node_modules/material-ui/FontIcon/FontIcon.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22119,7 +21843,7 @@ function initApollo(apolloConfig, initialState, headers) {
 
   return apolloClient;
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/process/browser.js"), __webpack_require__("./node_modules/webpack/buildin/global.js")))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/node-libs-browser/node_modules/process/browser.js"), __webpack_require__("./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -22316,7 +22040,7 @@ exports.default = function (apolloConfig) {
     }, _temp;
   };
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/node-libs-browser/node_modules/process/browser.js")))
 
 /***/ }),
 

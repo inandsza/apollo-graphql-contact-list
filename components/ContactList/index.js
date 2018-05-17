@@ -1,6 +1,8 @@
-import React from 'react';
-import { bool, shape, arrayOf } from 'prop-types';
+import React, { Fragment } from 'react';
+import { func, bool, shape, arrayOf } from 'prop-types';
 import { graphql } from 'react-apollo';
+import RaisedButton from 'material-ui/RaisedButton';
+
 import { allContactsQuery } from './query';
 
 import { contactType } from '../../propTypes/Contact';
@@ -9,21 +11,32 @@ import Contact from '../Contact';
 import { styles } from './styles.css';
 
 const ContactList = ({
+  loadMoreContacts,
   data: {
     allContacts,
     loading,
   },
 }) => (
-  <div style={styles}>
-    {
-      !loading && allContacts.map(contact => (
-        <Contact
-          key={contact.id}
-          {...contact}
-        />
-      ))
-    }
-  </div>
+  <Fragment>
+    <div style={styles.loadWrapper}>
+      <RaisedButton
+        onClick={() => loadMoreContacts()}
+        primary
+      >
+        load more
+      </RaisedButton>
+    </div>
+    <div style={styles.contactWrapper}>
+      {
+        !loading && allContacts.map(contact => (
+          <Contact
+            key={contact.id}
+            {...contact}
+          />
+        ))
+      }
+    </div>
+  </Fragment>
 );
 
 ContactList.propTypes = {
@@ -31,6 +44,7 @@ ContactList.propTypes = {
     allContacts: arrayOf(shape(contactType)),
     loading: bool,
   }).isRequired,
+  loadMoreContacts: func.isRequired,
 };
 
 export default graphql(allContactsQuery, {
@@ -50,13 +64,13 @@ export default graphql(allContactsQuery, {
         if (!fetchMoreResult) {
           return previousResult;
         }
-        return Object.assign({}, previousResult, {
-          // Append the new Contacts results to the old one
+        return {
+          ...previousResult,
           allContacts: [
-            ...previousResult.allPosts,
-            ...fetchMoreResult.allPosts,
+            ...previousResult.allContacts,
+            ...fetchMoreResult.allContacts,
           ],
-        });
+        };
       },
     }),
   }),

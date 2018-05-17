@@ -1,7 +1,14 @@
 export const styles = {
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
+  contactWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  loadWrapper: {
+    textAlign: 'center',
+    width: '100%',
+    marginTop: 16,
+  },
 };
 
 export default styles;

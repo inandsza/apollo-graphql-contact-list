@@ -26,7 +26,10 @@ const contactQuery = gql`
       id
       firstName
       lastName
-      phoneNumber
+      phoneNumbers {
+        label
+        number
+      }
     }
   }
 `;

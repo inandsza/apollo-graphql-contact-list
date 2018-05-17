@@ -3,7 +3,7 @@ import { func } from 'prop-types';
 
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Card, CardActions, CardHeader } from 'material-ui/Card';
+import { CardTitle, Card, CardActions, CardHeader } from 'material-ui/Card';
 
 import Divider from 'material-ui/Divider';
 
@@ -65,22 +65,51 @@ const AddContact = withState(({
         errorText={errors.lastName}
       />
       <Divider />
-      <TextField
-        hintText="Phone Number"
-        style={styles.textField}
-        underlineShow={false}
-        value={phoneNumbers && phoneNumbers.number}
-        onChange={e => onChange({ phoneNumbers: { ...phoneNumbers, number: e.target.value } })}
-        errorText={errors.phoneNumbers && errors.phoneNumbers[0].number}
-      />
-      <TextField
-        hintText="Phone Label"
-        style={styles.textField}
-        underlineShow={false}
-        value={phoneNumbers && phoneNumbers.label}
-        onChange={e => onChange({ phoneNumbers: { ...phoneNumbers, label: e.target.value } })}
-        errorText={errors.phoneNumbers && errors.phoneNumbers[0].number}
-      />
+      <CardTitle title="Numbers:" />
+      {
+        id && phoneNumbers.map(phone => (
+          <div>
+            <TextField
+              hintText="Phone Number"
+              style={styles.textField}
+              underlineShow={false}
+              value={phone.number}
+              onChange={e => onChange({ phoneNumbers: { ...phoneNumbers, number: e.target.value } })}
+              errorText={errors.phoneNumbers && errors.phoneNumbers[0].number}
+            />
+            <TextField
+              hintText="Phone Label"
+              style={styles.textField}
+              underlineShow={false}
+              value={phone.label}
+              onChange={e => onChange({ phoneNumbers: { ...phoneNumbers, label: e.target.value } })}
+              errorText={errors.phoneNumbers && errors.phoneNumbers[0].number}
+            />
+            <Divider />
+          </div>
+        ))
+      }
+      {
+        !id && <div>
+          <TextField
+            hintText="Phone Number"
+            style={styles.textField}
+            underlineShow={false}
+            value={phoneNumbers && phoneNumbers.number}
+            onChange={e => onChange({ phoneNumbers: { ...phoneNumbers, number: e.target.value } })}
+            errorText={errors.phoneNumbers && errors.phoneNumbers[0].number}
+          />
+          <TextField
+            hintText="Phone Label"
+            style={styles.textField}
+            underlineShow={false}
+            value={phoneNumbers && phoneNumbers.label}
+            onChange={e => onChange({ phoneNumbers: { ...phoneNumbers, label: e.target.value } })}
+            errorText={errors.phoneNumbers && errors.phoneNumbers[0].number}
+          />
+          <Divider />
+        </div>
+      }
       <Divider />
       <CardActions style={styles.actions}>
         <RaisedButton
