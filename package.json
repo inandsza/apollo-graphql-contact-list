@@ -1,0 +1,54 @@
+{
+  "name": "react-redux-graphql-contact-list",
+  "version": "1.0.0",
+  "description": "react redux graphql contact list",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "eslint --ignore-path .gitignore .",
+    "test": "jest --coverage",
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "apollo-link-http": "^1.5.4",
+    "babel-eslint": "^8.2.3",
+    "express": "^4.16.3",
+    "graphql-tag": "^2.9.2",
+    "jest": "^22.4.3",
+    "material-ui": "^0.20.1",
+    "next": "^6.0.2",
+    "next-apollo": "^1.0.13",
+    "next-routes": "^1.4.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-apollo": "^2.1.4",
+    "react-dom": "^16.3.2",
+    "react-tap-event-plugin": "^3.0.2",
+    "styled-components": "^3.2.6"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
+    "jest-cli": "^22.4.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "components/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 75,
+        "functions": 75,
+        "lines": 75,
+        "statements": 75
+      }
+    }
+  },
+  "author": "Sina Zand",
+  "license": "ISC"
+}
