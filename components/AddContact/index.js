@@ -13,6 +13,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import withState from './state.hoc';
 import { styles } from './styles.css';
 
+import { contactType } from '../../propTypes/Contact';
+
 const placeholders = [
   'https://semantic-ui.com/images/avatar2/large/elyse.png',
   'https://semantic-ui.com/images/avatar2/large/matthew.png',
@@ -28,6 +30,8 @@ const AddContact = withState(({
   lastName,
   phoneNumbers,
   errors,
+  addNewPhoneNumber,
+  onChangePhoneNumber,
 }) => (
   <form
     noValidate
@@ -67,14 +71,14 @@ const AddContact = withState(({
       <Divider />
       <CardTitle title="Numbers:" />
       {
-        id && phoneNumbers.map(phone => (
+        phoneNumbers && phoneNumbers.map((phone, index) => (
           <div>
             <TextField
               hintText="Phone Number"
               style={styles.textField}
               underlineShow={false}
               value={phone.number}
-              onChange={e => onChange({ phoneNumbers: { ...phoneNumbers, number: e.target.value } })}
+              onChange={e => onChangePhoneNumber({ ...phone, number: e.target.value }, index)}
               errorText={errors.phoneNumbers && errors.phoneNumbers[0].number}
             />
             <TextField
@@ -82,35 +86,19 @@ const AddContact = withState(({
               style={styles.textField}
               underlineShow={false}
               value={phone.label}
-              onChange={e => onChange({ phoneNumbers: { ...phoneNumbers, label: e.target.value } })}
+              onChange={e => onChangePhoneNumber({ ...phone, label: e.target.value }, index)}
               errorText={errors.phoneNumbers && errors.phoneNumbers[0].number}
             />
             <Divider />
           </div>
         ))
       }
-      {
-        !id && <div>
-          <TextField
-            hintText="Phone Number"
-            style={styles.textField}
-            underlineShow={false}
-            value={phoneNumbers && phoneNumbers.number}
-            onChange={e => onChange({ phoneNumbers: { ...phoneNumbers, number: e.target.value } })}
-            errorText={errors.phoneNumbers && errors.phoneNumbers[0].number}
-          />
-          <TextField
-            hintText="Phone Label"
-            style={styles.textField}
-            underlineShow={false}
-            value={phoneNumbers && phoneNumbers.label}
-            onChange={e => onChange({ phoneNumbers: { ...phoneNumbers, label: e.target.value } })}
-            errorText={errors.phoneNumbers && errors.phoneNumbers[0].number}
-          />
-          <Divider />
-        </div>
-      }
       <Divider />
+      <RaisedButton
+        label="Add New Number"
+        onClick={addNewPhoneNumber}
+        primary
+      />
       <CardActions style={styles.actions}>
         <RaisedButton
           label="Submit"
@@ -123,8 +111,9 @@ const AddContact = withState(({
 ));
 
 AddContact.propTypes = {
-  onChange: func,
-  onSubmit: func,
+  onChange: func.isRequired,
+  addNewPhoneNumber: func.isRequired,
+  ...contactType,
 };
 
 const createContact = gql`
